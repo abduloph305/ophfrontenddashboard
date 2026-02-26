@@ -8,7 +8,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-gradient-to-br from-slate-50 via-white to-slate-100 min-h-screen" suppressHydrationWarning>
+      <body className="bg-gradient-to-br from-slate-50 via-white to-slate-100 min-h-screen text-slate-900 font-sans" suppressHydrationWarning>
         {children}
         <Toaster position="top-right" />
       </body>

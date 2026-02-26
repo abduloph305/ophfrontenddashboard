@@ -59,7 +59,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-6">
             <button
               onClick={handleLogout}
-              className="px-4 py-2 text-sm font-medium text-black-700 hover:bg-gray-400 rounded-lg transition duration-200"
+              className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-400 rounded-lg transition duration-200"
             >
               Logout
             </button>
