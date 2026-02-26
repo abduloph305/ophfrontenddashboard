@@ -1,25 +1,17 @@
-// import { create } from "zustand"
-
-// interface AuthState {
-//   accessToken: string | null
-//   refreshToken: string | null
-//   setTokens: (a: string, r: string) => void
-//   logout: () => void
-// }
-
-// export const useAuthStore = create<AuthState>((set) => ({
-//   accessToken: null,
-//   refreshToken: null,
-//   setTokens: (a, r) =>
-//     set({ accessToken: a, refreshToken: r }),
-//   logout: () =>
-//     set({ accessToken: null, refreshToken: null }),
-// }))
-
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
 
-export const useAuthStore = create(
+interface AuthState {
+  accessToken: string | null
+  refreshToken: string | null
+  hasHydrated: boolean
+  setTokens: (accessToken: string, refreshToken: string) => void
+  clearTokens: () => void
+  logout: () => void
+  setHasHydrated: (state: boolean) => void
+}
+
+export const useAuthStore = create<AuthState>()(
   persist(
     (set) => ({
       accessToken: null,
