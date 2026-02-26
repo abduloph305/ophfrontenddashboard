@@ -2,12 +2,12 @@
 
 import { useState } from "react"
 import { registerApi } from "@/modules/auth/auth.api"
-import { useAuthStore } from "@/modules/auth/auth.store"
+import { useAuthStore, AuthState } from "@/modules/auth/auth.store"
 import { useRouter } from "next/navigation"
 
 export default function RegisterPage() {
   const router = useRouter()
-  const setTokens = useAuthStore((s) => s.setTokens)
+  const setTokens = useAuthStore((s: AuthState) => s.setTokens)
 
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")

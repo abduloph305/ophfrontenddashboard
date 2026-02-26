@@ -3,96 +3,96 @@
 
 import { useState } from "react"
 import { loginApi } from "@/modules/auth/auth.api"
-import { useAuthStore } from "@/modules/auth/auth.store"
+import { useAuthStore, AuthState } from "@/modules/auth/auth.store"
 import { useRouter } from "next/navigation"
 
 export default function LoginPage() {
   const router = useRouter()
-  const setTokens = useAuthStore((s) => s.setTokens)
+  const setTokens = useAuthStore((s: AuthState) => s.setTokens)
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
-//   const handleLogin = async () => {
-//     try {
-//       setLoading(true)
-//       setError("")
+  //   const handleLogin = async () => {
+  //     try {
+  //       setLoading(true)
+  //       setError("")
 
-//       const res = await loginApi({ email, password })
+  //       const res = await loginApi({ email, password })
 
-//       setTokens(res.data.accessToken, res.data.refreshToken)
-//       router.push("/dashboard")
-//     } catch (err: any) {
-//       setError(err?.response?.data?.message || "Invalid credentials")
-//     } finally {
-//       setLoading(false)
-//     }
-//   }
+  //       setTokens(res.data.accessToken, res.data.refreshToken)
+  //       router.push("/dashboard")
+  //     } catch (err: any) {
+  //       setError(err?.response?.data?.message || "Invalid credentials")
+  //     } finally {
+  //       setLoading(false)
+  //     }
+  //   }
 
-// const handleLogin = async () => {
-//   try {
-//     console.log("🔥 Login started")
-//     setLoading(true)
-//     setError("")
+  // const handleLogin = async () => {
+  //   try {
+  //     console.log("🔥 Login started")
+  //     setLoading(true)
+  //     setError("")
 
-//     console.log("📤 Sending:", { email, password })
+  //     console.log("📤 Sending:", { email, password })
 
-//     const res = await loginApi({ email, password })
+  //     const res = await loginApi({ email, password })
 
-//     console.log("✅ Full response:", res)
-//     console.log("✅ Response data:", res.data)
-//     console.log("🔑 Access token:", res.data?.accessToken)
-//     console.log("🔑 Refresh token:", res.data?.refreshToken)
+  //     console.log("✅ Full response:", res)
+  //     console.log("✅ Response data:", res.data)
+  //     console.log("🔑 Access token:", res.data?.accessToken)
+  //     console.log("🔑 Refresh token:", res.data?.refreshToken)
 
-//     if (!res.data?.accessToken || !res.data?.refreshToken) {
-//       console.log("❌ Tokens missing!")
-//       setError("Tokens not received")
-//       return
-//     }
+  //     if (!res.data?.accessToken || !res.data?.refreshToken) {
+  //       console.log("❌ Tokens missing!")
+  //       setError("Tokens not received")
+  //       return
+  //     }
 
-//     console.log("💾 Setting tokens in store...")
-//     setTokens(res.data.accessToken, res.data.refreshToken)
+  //     console.log("💾 Setting tokens in store...")
+  //     setTokens(res.data.accessToken, res.data.refreshToken)
 
-//     console.log("🚀 Redirecting to dashboard...")
-//     router.push("/dashboard")
+  //     console.log("🚀 Redirecting to dashboard...")
+  //     router.push("/dashboard")
 
-//     console.log("✅ router.push called")
+  //     console.log("✅ router.push called")
 
-//   } catch (err: any) {
-//     console.log("❌ Login error:", err)
-//     console.log("❌ Error response:", err?.response)
+  //   } catch (err: any) {
+  //     console.log("❌ Login error:", err)
+  //     console.log("❌ Error response:", err?.response)
 
-//     setError(err?.response?.data?.message || "Invalid credentials")
-//   } finally {
-//     console.log("🏁 Login finished")
-//     setLoading(false)
-//   }
-// }
+  //     setError(err?.response?.data?.message || "Invalid credentials")
+  //   } finally {
+  //     console.log("🏁 Login finished")
+  //     setLoading(false)
+  //   }
+  // }
 
-const handleLogin = async () => {
-  try {
-    setLoading(true)
-    setError("")
+  const handleLogin = async () => {
+    try {
+      setLoading(true)
+      setError("")
 
-    const res = await loginApi({ email, password })
+      const res = await loginApi({ email, password })
 
-    const { accessToken, refreshToken } = res.data
+      const { accessToken, refreshToken } = res.data
 
-    
-    setTokens(accessToken, refreshToken)
 
-   
-    document.cookie = `accessToken=${accessToken}; path=/`
+      setTokens(accessToken, refreshToken)
 
-    router.push("/dashboard")
-  } catch (err: any) {
-    setError(err?.response?.data?.message || "Invalid credentials")
-  } finally {
-    setLoading(false)
+
+      document.cookie = `accessToken=${accessToken}; path=/`
+
+      router.push("/dashboard")
+    } catch (err: any) {
+      setError(err?.response?.data?.message || "Invalid credentials")
+    } finally {
+      setLoading(false)
+    }
   }
-}
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-indigo-200">
