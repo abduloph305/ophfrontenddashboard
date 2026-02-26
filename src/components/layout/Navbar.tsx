@@ -20,13 +20,13 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { useAuthStore } from "@/modules/auth/auth.store"
+import { useAuthStore, AuthState } from "@/modules/auth/auth.store"
 import { Menu, X } from "lucide-react"
 import { useState } from "react"
 
 export default function Navbar() {
   const router = useRouter()
-  const logout = useAuthStore((s) => s.logout)
+  const logout = useAuthStore((s: AuthState) => s.logout)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const handleLogout = () => {

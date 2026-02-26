@@ -2,14 +2,14 @@
 
 import Sidebar from "@/components/layout/Sidebar"
 import Navbar from "@/components/layout/Navbar"
-import { useAuthStore } from "@/modules/auth/auth.store"
+import { useAuthStore, AuthState } from "@/modules/auth/auth.store"
 
 export default function SegmentsLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const hasHydrated = useAuthStore((s) => s.hasHydrated)
+  const hasHydrated = useAuthStore((s: AuthState) => s.hasHydrated)
 
   if (!hasHydrated) {
     return <div className="p-6">Loading...</div>

@@ -8,13 +8,13 @@ interface Rule {
   field: string
   operator: string
   value: any
-  valueRange?: { from: any; to: any }
+  valueRange?: { from?: any; to?: any }
 }
 
 interface SegmentBuilderProps {
   initialRules?: Rule[]
   initialLogic?: "AND" | "OR"
-  onSave?: (rules: Rule[], logic: string) => void
+  onSave?: (rules: Rule[], logic: "AND" | "OR") => void
 }
 
 const FIELDS = [

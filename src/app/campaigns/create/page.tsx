@@ -29,7 +29,7 @@ export default function CreateCampaignPage() {
     getSegmentsApi().then((res) => setSegments(res.data))
   }, [])
 
-  const handleEmailBuilderSave = (html: string, blocks: any[]) => {
+  const handleEmailBuilderSave = (name: string, category: string, html: string, blocks: any[]) => {
     setHtmlContent(html)
     setEmailBlocks(blocks)
   }

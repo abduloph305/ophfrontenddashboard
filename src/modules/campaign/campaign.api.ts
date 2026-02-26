@@ -1,5 +1,5 @@
 import api from "@/lib/axios"
-import { CreateCampaignDto } from "./campaign.types"
+import { CreateCampaignDto, CreateABTestDto } from "./campaign.types"
 
 export const getCampaignsApi = (params?: any) =>
   api.get("/campaigns", { params })
@@ -47,7 +47,7 @@ export const loadTemplateApi = (campaignId: string, templateId: string) =>
   api.post(`/campaigns/${campaignId}/load-template`, { templateId })
 
 // A/B Testing
-export const createABTestApi = (data: any) =>
+export const createABTestApi = (data: CreateABTestDto) =>
   api.post("/campaigns/ab-test/create", data)
 
 export const getABTestsApi = () =>
